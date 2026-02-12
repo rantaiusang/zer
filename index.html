@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Gorbon | Full Stack & Web3 Developer</title>
+    <meta name="description" content="Profil Profesional Gorbon. Full Stack Developer, Web3 Expert, dan Smart Contract Deployer.">
+    
+    <!-- Google Fonts: Space Grotesk (Tech feel) & Inter (Clean text) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
+    <!-- Icons (Phosphor Icons) -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <style>
+        /* --- CSS VARIABLES --- */
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: rgba(255, 255, 255, 0.05);
+            --bg-card-hover: rgba(255, 255, 255, 0.1);
+            --primary: #8b5cf6; /* Violet */
+            --accent: #10b981;  /* Emerald Green */
+            --text-main: #ffffff;
+            --text-muted: #a1a1aa;
+            --border: rgba(255, 255, 255, 0.1);
+            --glow: 0 0 20px rgba(139, 92, 246, 0.3);
+        }
+
+        /* --- RESET & BASE --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* Animated Mesh Gradient Background */
+            background-image: 
+                radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), 
+                radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%), 
+                radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%);
+            background-size: 200% 200%;
+            animation: bgMove 15s ease infinite;
+            padding: 40px 20px;
+            overflow-x: hidden;
+        }
+
+        @keyframes bgMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; }
+
+        /* --- CONTAINER --- */
+        .container {
+            width: 100%;
+            max-width: 480px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 24px;
+            z-index: 1;
+        }
+
+        /* --- PROFILE SECTION --- */
+        .profile-header {
+            text-align: center;
+            margin-bottom: 10px;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .avatar-wrapper {
+            position: relative;
+            width: 110px;
+            height: 110px;
+            margin: 0 auto 16px;
+        }
+
+        .avatar {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(255,255,255,0.1);
+            box-shadow: var(--glow);
+            transition: transform 0.3s ease;
+        }
+        
+        .avatar:hover { transform: scale(1.05) rotate(3deg); }
+
+        .verified-badge {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid var(--bg-dark);
+            font-size: 14px;
+        }
+
+        .profile-name { font-size: 1.5rem; font-weight: 700; margin-bottom: 4px; letter-spacing: -0.5px; }
+        .profile-bio { color: var(--text-muted); font-size: 0.95rem; max-width: 300px; margin: 0 auto; }
+
+        /* --- SOCIAL ICONS --- */
+        .social-row {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            animation: fadeIn 1s ease-out 0.2s backwards;
+        }
+
+        .social-link {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-main);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px -5px rgba(139, 92, 246, 0.4);
+            border-color: var(--primary);
+        }
+
+        /* --- SECTION HEADERS --- */
+        .section-header {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
+            margin-top: 20px;
+            margin-bottom: 10px;
+            width: 100%;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .section-header i { color: var(--primary); }
+
+        /* --- LINK LIST --- */
+        .links-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .link-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            text-decoration: none;
+            color: var(--text-main);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 0.5s ease-out backwards;
+        }
+
+        .links-container .link-card:nth-child(1) { animation-delay: 0.1s; }
+        .links-container .link-card:nth-child(2) { animation-delay: 0.2s; }
+        .links-container .link-card:nth-child(3) { animation-delay: 0.3s; }
+
+        .link-card:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--primary);
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .link-left {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .link-icon {
+            font-size: 24px;
+            color: var(--primary);
+        }
+
+        .link-info h4 { font-size: 1rem; font-weight: 600; margin-bottom: 2px; }
+        .link-info p { font-size: 0.8rem; color: var(--text-muted); }
+
+        .link-arrow { color: var(--text-muted); transition: transform 0.3s; }
+        .link-card:hover .link-arrow { transform: translateX(5px); color: var(--text-main); }
+
+        /* --- SPECIAL: COMING SOON / BLUR CARD --- */
+        .blur-card {
+            cursor: default;
+            background: rgba(255, 255, 255, 0.02);
+            border-style: dashed;
+            border-color: rgba(255, 255, 255, 0.15);
+            position: relative;
+        }
+        
+        .blur-card .link-icon { 
+            color: var(--text-muted); 
+            opacity: 0.7;
+        }
+        
+        .blur-card .link-info h4 { 
+            color: var(--text-muted); 
+            opacity: 0.8;
+        }
+
+        .blur-card:hover {
+            transform: none;
+            background: rgba(255, 255, 255, 0.02);
+            border-color: rgba(255, 255, 255, 0.15);
+            box-shadow: none;
+        }
+
+        .badge-lock {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(0,0,0,0.5);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            border: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* --- SMART CONTRACT CARD (SPECIAL STYLE) --- */
+        .contract-card {
+            background: linear-gradient(145deg, rgba(16, 185, 129, 0.1), rgba(0,0,0,0));
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            cursor: pointer;
+        }
+        
+        .contract-card:hover {
+            border-color: var(--accent);
+            background: linear-gradient(145deg, rgba(16, 185, 129, 0.2), rgba(0,0,0,0));
+        }
+        
+        .contract-card .link-icon { color: var(--accent); }
+        .contract-copy-hint { font-size: 0.7rem; color: var(--accent); opacity: 0; transition: opacity 0.3s; }
+        .contract-card:hover .contract-copy-hint { opacity: 1; }
+
+        /* --- FOOTER --- */
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            opacity: 0.7;
+            animation: fadeIn 1s ease-out 0.8s backwards;
+        }
+
+        .footer-logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--text-main);
+            margin-bottom: 5px;
+            display: inline-block;
+        }
+
+        /* --- ANIMATIONS --- */
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* --- TOAST NOTIFICATION --- */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--accent);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 100;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        
+        .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- PROFILE HEADER -->
+        <header class="profile-header">
+            <div class="avatar-wrapper">
+                <!-- FOTO PROFIL DIUPDATE MENGGUNAKAN LINK SUPABASE -->
+                <img src="https://dikapquhusbwjccbqcsb.supabase.co/storage/v1/object/public/images/zer-2.webp" alt="Gorbon Avatar" class="avatar">
+                <div class="verified-badge"><i class="ph ph-check"></i></div>
+            </div>
+            <h1 class="profile-name">Gorbon</h1>
+            <p class="profile-bio">Full Stack Dev • Web3 Enthusiast • Smart Contract Architect</p>
+        </header>
+
+        <!-- SOCIAL ICONS -->
+        <div class="social-row">
+            <a href="https://github.com/gorbon" target="_blank" class="social-link" aria-label="GitHub"><i class="ph ph-github-logo" style="font-size: 20px;"></i></a>
+            <a href="https://linkedin.com/in/gorbon" target="_blank" class="social-link" aria-label="LinkedIn"><i class="ph ph-linkedin-logo" style="font-size: 20px;"></i></a>
+            <a href="https://wa.me/628133039866" target="_blank" class="social-link" aria-label="WhatsApp"><i class="ph ph-whatsapp-logo" style="font-size: 20px;"></i></a>
+        </div>
+
+        <!-- SECTION 1: FULL STACK PROJECTS -->
+        <div class="section-header">
+            <i class="ph ph-desktop"></i> Full Stack Projects
+        </div>
+        <div class="links-container">
+            <!-- PROJECT 1: Ngebel -->
+            <a href="https://ngebel.vercel.app" target="_blank" class="link-card">
+                <div class="link-left">
+                    <i class="ph ph-plant link-icon" style="color: #4ade80;"></i>
+                    <div class="link-info">
+                        <h4>Ngebel Smart Agri</h4>
+                        <p>Smart Of Things</p>
+                    </div>
+                </div>
+                <i class="ph ph-arrow-up-right link-arrow"></i>
+            </a>
+
+            <!-- PROJECT 2: Aurora (Web3) -->
+            <a href="https://aurora.vercel.app" target="_blank" class="link-card">
+                <div class="link-left">
+                    <i class="ph ph-cube-transparent link-icon" style="color: #22d3ee;"></i>
+                    <div class="link-info">
+                        <h4>Aurora Web3</h4>
+                        <p>Decentralized App Interface Smart Contract</p>
+                    </div>
+                </div>
+                <i class="ph ph-arrow-up-right link-arrow"></i>
+            </a>
+        </div>
+
+        <!-- SECTION 2: WEB3 SPECIALTIES (NFT & DEFI) -->
+        <div class="section-header">
+            <i class="ph ph-currency-eth"></i> Web3 Ecosystem
+        </div>
+        <div class="links-container">
+            <!-- DUMMY: NFT PROJECT -->
+            <div class="link-card blur-card">
+                <div class="badge-lock"><i class="ph ph-paint-brush"></i> Private</div>
+                <div class="link-left">
+                    <i class="ph ph-image-square link-icon" style="color: #ec4899;"></i>
+                    <div class="link-info">
+                        <h4>NFT Marketplace V2</h4>
+                        <p>Multi-chain Asset Trading Platform</p>
+                    </div>
+                </div>
+                <i class="ph ph-lock link-arrow" style="opacity: 0.5; color: #ec4899;"></i>
+            </div>
+
+            <!-- DUMMY: DEFI PROJECT -->
+            <div class="link-card blur-card">
+                <div class="badge-lock"><i class="ph ph-trend-up"></i> Audit</div>
+                <div class="link-left">
+                    <i class="ph ph-chart-line-up link-icon" style="color: #3b82f6;"></i>
+                    <div class="link-info">
+                        <h4>DeFi Liquidity Protocol</h4>
+                        <p>Automated Market Maker (AMM)</p>
+                    </div>
+                </div>
+                <i class="ph ph-shield-check link-arrow" style="opacity: 0.5; color: #3b82f6;"></i>
+            </div>
+        </div>
+
+        <!-- SECTION 3: RESOURCES & TUTORIALS -->
+        <div class="section-header">
+            <i class="ph ph-article"></i> Resources 
+        </div>
+        <div class="links-container">
+            <!-- PROJECT 3: Kopinya Tutorial -->
+            <a href="https://otwtajir.my.id" target="_blank" class="link-card">
+                <div class="link-left">
+                    <i class="ph ph-coffee link-icon" style="color: #f59e0b;"></i>
+                    <div class="link-info">
+                        <h4>Blockchain</h4>
+                        <p>Blog Edukasi Web 3 & Tech</p>
+                    </div>
+                </div>
+                <i class="ph ph-arrow-up-right link-arrow"></i>
+            </a>
+        </div>
+
+        <!-- SECTION 4: ROADMAP -->
+        <div class="section-header">
+            <i class="ph ph-clock-countdown"></i> Roadmap
+        </div>
+        <div class="links-container">
+            <!-- DUMMY 1: Enterprise Project -->
+            <div class="link-card blur-card">
+                <div class="badge-lock"><i class="ph ph-lock-key"></i> NDA</div>
+                <div class="link-left">
+                    <i class="ph ph-buildings link-icon"></i>
+                    <div class="link-info">
+                        <h4>Enterprise ERP System</h4>
+                        <p>Internal Management Tool for Client</p>
+                    </div>
+                </div>
+                <i class="ph ph-lock link-arrow" style="opacity: 0.5;"></i>
+            </div>
+
+            <!-- DUMMY 2: Upcoming Tech -->
+            <div class="link-card blur-card">
+                <div class="badge-lock"><i class="ph ph-hourglass-high"></i> Q4 2024</div>
+                <div class="link-left">
+                    <i class="ph ph-robot link-icon"></i>
+                    <div class="link-info">
+                        <h4>AI Core</h4>
+                        <p>Automated Algorithmic </p>
+                    </div>
+                </div>
+                <i class="ph ph-dots-three link-arrow" style="opacity: 0.5;"></i>
+            </div>
+        </div>
+
+        <!-- SECTION 5: SMART CONTRACT (PENTING BAGI WEB3 DEV) -->
+        <div class="section-header">
+            <i class="ph ph-file-code"></i> Smart Contracts
+        </div>
+        <div class="links-container">
+            <!-- SPECIAL: SMART CONTRACT ADDRESS (Click to Copy) -->
+            <div class="link-card contract-card" onclick="copyContract('0x1234567890abcdef1234567890abcdef12345678')">
+                <div class="link-left">
+                    <i class="ph ph-currency-eth link-icon"></i>
+                    <div class="link-info">
+                        <h4>Gorbon Token Soroban</h4>
+                        <p id="contract-short">0x1639...7039</p>
+                    </div>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: center;">
+                    <span class="contract-copy-hint">Click to Copy</span>
+                    <i class="ph ph-copy link-arrow" style="color: var(--accent);"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOOTER CTA (EMAIL DIUBAH KE GMAIL) -->
+        <div class="links-container" style="margin-top: 10px;">
+            <a href="mailto:gorbondev@gmail.com" class="link-card" style="background: rgba(139, 92, 246, 0.15); border-color: var(--primary);">
+                <div class="link-left">
+                    <i class="ph ph-envelope-simple link-icon" style="color: #d8b4fe;"></i>
+                    <div class="link-info">
+                        <h4 style="color: #d8b4fe;">Hire Me</h4>
+                        <p style="color: #d8b4fe;">gorbondev@gmail.com</p>
+                    </div>
+                </div>
+                <i class="ph ph-arrow-right link-arrow" style="color: #d8b4fe;"></i>
+            </a>
+        </div>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div class="footer-logo">Gorbon</div>
+            <p>© 2026 All Rights Reserved.</p>
+        </footer>
+    </div>
+
+    <!-- TOAST ELEMENT -->
+    <div id="toast" class="toast">
+        <i class="ph ph-check-circle" style="color: var(--accent); font-size: 20px;"></i>
+        <span>Contract Address Copied!</span>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Fungsi Copy Address Smart Contract
+        function copyContract(address) {
+            navigator.clipboard.writeText(address).then(() => {
+                showToast();
+            }).catch(err => {
+                console.error('Gagal menyalin:', err);
+            });
+        }
+
+        // Fungsi Menampilkan Notifikasi (Toast)
+        function showToast() {
+            const toast = document.getElementById('toast');
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
